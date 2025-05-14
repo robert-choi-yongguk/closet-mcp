@@ -28,4 +28,7 @@
     <ItemGroup>
         <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Closet.MCP.Core\Closet.MCP.Core.csproj" />
+    </ItemGroup>
 </Project>
