@@ -28,6 +28,7 @@ public class WorkroomTool(
         }
         
         var client = _httpClientFactory.CreateClient(Constants.ClosetHttpClientName);
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {arguments.GroupToken}");
         var parameters = new Dictionary<string, string?>
         {
             { "groupId", arguments.GroupId! },
@@ -39,7 +40,7 @@ public class WorkroomTool(
         };
         
         var requestUri = QueryHelpers.AddQueryString(UrlPath, parameters);
-        var response = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, requestUri));
+        var response = await client.GetAsync(requestUri);
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();
     }
